@@ -4,18 +4,22 @@
 #include <string.h> //biblioteca resonsável por cuidar das strings 
 
 
-int registro()
+int registro() //função responsavel por cadastrar usuarios no sistema 
 {
+	setlocale(LC_ALL, "portuguese"); //definindo linguagem
+	
+	//inicio da criação de variageis/strings
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	//final da criação de variaveis 
 	
-	printf("Digite o CPF a ser cadastrado:");
-	scanf("%s",cpf);
+	printf("Digite o CPF a ser cadastrado:"); //coletando infromações do usuario 
+	scanf("%s",cpf); //salvando strings 
 	
-	strcpy(arquivo, cpf); //responsável polr copiar os valores das strings 
+	strcpy(arquivo, cpf); //responsável por copiar os valores das strings 
 	
 	FILE *file; //cria o arquivo 
 	file = fopen(arquivo, "w"); //cria o arquivo 
@@ -56,14 +60,12 @@ int registro()
 	fclose(file);
 	
 	
-	system("pause");
-	
-	
-	
 }
 
 int consulta()
 {
+	setlocale(LC_ALL, "portuguese"); //definindo linguagem
+	
 	char cpf[40];
 	char conteudo[200];
 	
@@ -73,7 +75,7 @@ int consulta()
 	FILE*file;
 	file = fopen(cpf,"r");
 	
-	if(file== NULL)
+	if(file == NULL);
 	
 	{
 		printf("Não foi possivel abrir arquivo, não localizado!\n");
@@ -86,14 +88,29 @@ int consulta()
 		printf("\n\n");
 	}
 	
-	system ("pause");
+	system("pause");
 }
 
  int deletar()
  {
-    printf("Você escolheu deletar nomes!\n");
-    system("pause");
- }
+    char cpf[40];
+    
+    printf ("Digite o CPF a ser deletado:");
+    scanf("%s", cpf);
+    
+    remove(cpf);
+    
+    FILE *file;
+    file = fopen(cpf,"r");
+  
+    if(file == NULL)
+    {
+    	printf("Usuário deletado do sistema!. \n");
+    	system("pause");
+	}
+	
+
+   }
 
 
 
@@ -121,15 +138,15 @@ for (x=1; x=1;)
 	 switch(opcao)
 	 {
 	 	 case 1: 
-	 	 registro();
+	 	 registro(); //chamada de funções 
          break;
         
          case 2:
-         consulta();
+         consulta(); //chamada de funções
 		 break;
 		
 		 case 3: 
-		 deletar();
+		 deletar(); //chamada de funções
 		 break;
 		 
 		 default:
